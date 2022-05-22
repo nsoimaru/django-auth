@@ -1,9 +1,8 @@
-import email
-from urllib import response
+import re
 from rest_framework import exceptions
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from core.authentication import create_access_token
+from core.authentication import create_access_token, JWTAuthentication
 
 from core.models import User
 
@@ -45,3 +44,8 @@ class LoginAPIView(APIView):
             'token': access_token
         }
         return response
+
+class UserAPIView(APIView):
+    authentication_classes = [JWTAuthentication]
+    def get(self, request):
+        return Response(UserSerializer(request.user).data)
