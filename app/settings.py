@@ -110,6 +110,10 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+REST_FRAMEWORK = {
+    'EXCEPTION_HANDLER': 'core.exceptions.status_code_handler'
+}
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
@@ -137,3 +141,6 @@ AUTH_USER_MODEL = 'core.User'
 
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_CREDENTIALS = True
+
+EMAIL_HOST = 'localhost' # 0.0.0.0
+EMAIL_PORT = 1025
